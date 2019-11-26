@@ -10,8 +10,8 @@ public class MoodAnalyzerTest {
     public void ifInputSadOrHappy_ShouldReturnSadOrHappyMood() {
 
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
-        String result=moodAnalyzer.analyseMood("I am in Sad Mood");
-        Assert.assertEquals("SAD",result);
+        String result=moodAnalyzer.analyseMood("I am in Any Mood");
+        Assert.assertEquals("HAPPY",result);
 
 
     }
