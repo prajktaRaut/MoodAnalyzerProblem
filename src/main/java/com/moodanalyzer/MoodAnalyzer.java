@@ -23,6 +23,11 @@ public class MoodAnalyzer
         if (message == null) {
             throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL);
         }
+        else if (message.isEmpty())
+        {
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_EMPTY);
+        }
+
         return null;
     }
 

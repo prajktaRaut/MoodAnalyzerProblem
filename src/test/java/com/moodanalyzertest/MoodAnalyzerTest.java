@@ -134,7 +134,7 @@ public class MoodAnalyzerTest {
     }
 
     @Test
-    public void givenMethod_ShouldThrowMoodAnalysisException() {
+    public void givenNullMood_ShouldThrowMoodAnalysisException() {
 
         MoodAnalyzer realMoodAnalyser = new MoodAnalyzer(null);
 
@@ -149,4 +149,23 @@ public class MoodAnalyzerTest {
         }
 
     }
+
+    @Test
+    public void givenEmptyMood_ShouldThrowMoodAnalysisException() {
+
+        MoodAnalyzer realMoodAnalyser = new MoodAnalyzer(" ");
+
+        try {
+
+            realMoodAnalyser.analyseMood(" ");
+
+        } catch (MoodAnalysisException e) {
+
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_EMPTY,e.exceptionType);
+
+        }
+
+    }
+
+
 }
