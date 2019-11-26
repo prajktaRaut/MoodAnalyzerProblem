@@ -1,5 +1,6 @@
 package com.moodanalyzertest;
 
+import com.moodanalyzer.MoodAnalyserFactory;
 import com.moodanalyzer.MoodAnalysisException;
 import com.moodanalyzer.MoodAnalyzer;
 import org.junit.Assert;
@@ -167,5 +168,14 @@ public class MoodAnalyzerTest {
 
     }
 
+    @Test
+    public void ifTwoObjectsAreEquals_shouldReturnTrue() {
 
+        MoodAnalyzer moodAnalyzer= MoodAnalyserFactory.createMoodAnalyser("I am in debug mode");
+
+        boolean result=moodAnalyzer.equals(moodAnalyzer);
+
+        Assert.assertTrue(result);
+
+    }
 }

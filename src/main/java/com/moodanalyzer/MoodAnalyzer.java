@@ -31,5 +31,11 @@ public class MoodAnalyzer
         return null;
     }
 
+    public boolean equals(MoodAnalyzer another) {
+        if (this.message.equals(((MoodAnalyzer) another).message))
+            return true;
+        return false;
+    }
 
-}
+
+    }
