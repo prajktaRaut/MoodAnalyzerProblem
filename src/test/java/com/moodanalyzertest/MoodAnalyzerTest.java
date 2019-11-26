@@ -168,14 +168,34 @@ public class MoodAnalyzerTest {
 
     }
 
-    @Test
+  /*  @Test
     public void ifTwoObjectsAreEquals_shouldReturnTrue() {
 
-        MoodAnalyzer moodAnalyzer= MoodAnalyserFactory.createMoodAnalyser("I am in debug mode");
+        MoodAnalyzer moodAnalyzer= null;
+        try {
+            moodAnalyzer = MoodAnalyserFactory.createMoodAnalyser("I am in debug mode");
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
 
         boolean result=moodAnalyzer.equals(moodAnalyzer);
 
         Assert.assertTrue(result);
+
+    }*/
+
+    @Test
+    public void whenClassName_IsImproper_ShouldReturnMoodAnalysisException()  {
+
+
+        try {
+            MoodAnalyzer moodAnalyzer=MoodAnalyserFactory.createMoodAnalyser("Improper class name");
+            moodAnalyzer.analyseMood();
+
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS,e.exceptionType);
+        }
+
 
     }
 }
