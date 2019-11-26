@@ -4,6 +4,7 @@ import com.moodanalyzer.MoodAnalysisException;
 import com.moodanalyzer.MoodAnalyzer;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class MoodAnalyzerTest {
 
@@ -120,16 +121,16 @@ public class MoodAnalyzerTest {
     }
 
     @Test
-    public void givenMethod_ToHandleCustomeException_ShouldReturnMessage() {
+    public void givenMethod_ToHandleCustomException_ShouldReturnMessage() {
 
-        MoodAnalyzer moodAnalyzer=new MoodAnalyzer();
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
         try {
-            String result=moodAnalyzer.analyseMood();
+            ExpectedException expectedException = ExpectedException.none();
+            expectedException.expect(MoodAnalysisException.class);
+            moodAnalyzer.analyseMood(null);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals("Please enter proper input", e.getMessage());
         }
-        catch (MoodAnalysisException e) {
-            Assert.assertEquals("Please enter proper input",e.getMessage());
-        }
-
-
     }
+
 }
