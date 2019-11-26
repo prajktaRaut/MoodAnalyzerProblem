@@ -10,9 +10,7 @@ public class MoodAnalyzer {
     }
 
     public String MoodAnalyzer() {
-
         return analyseMood();
-
     }
 
     public String analyseMood()
