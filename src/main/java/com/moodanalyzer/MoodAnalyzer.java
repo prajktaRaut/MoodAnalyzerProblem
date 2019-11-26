@@ -30,7 +30,7 @@ public class MoodAnalyzer
         }
         catch (NullPointerException e)
         {
-            return "Please enter proper input";
+            return "HAPPY";
         }
 
     }

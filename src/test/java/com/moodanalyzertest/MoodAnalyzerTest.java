@@ -68,4 +68,14 @@ public class MoodAnalyzerTest {
         Assert.assertEquals("Please enter proper input",result);
 
     }
+
+    @Test
+    public void givenMethod_ToHandle_NullPointerException_ShouldReturnHappy() {
+
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
+        String result=moodAnalyzer.analyseMood();
+        Assert.assertEquals("HAPPY",result);
+
+    }
+
 }
