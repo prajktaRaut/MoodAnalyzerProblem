@@ -11,7 +11,7 @@ public class MoodAnalysisException extends Exception {
 
     public enum ExceptionType{
 
-        ENTERED_NULL, ENTERED_EMPTY,NO_SUCH_CLASS
+        ENTERED_NULL, ENTERED_EMPTY,NO_SUCH_CLASS,No_SUCH_METHOD
 
     }
 

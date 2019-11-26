@@ -168,7 +168,7 @@ public class MoodAnalyzerTest {
 
     }
 
-  /*  @Test
+    @Test
     public void ifTwoObjectsAreEquals_shouldReturnTrue() {
 
         MoodAnalyzer moodAnalyzer= null;
@@ -182,7 +182,7 @@ public class MoodAnalyzerTest {
 
         Assert.assertTrue(result);
 
-    }*/
+    }
 
     @Test
     public void whenClassName_IsImproper_ShouldReturnMoodAnalysisException()  {
@@ -198,4 +198,21 @@ public class MoodAnalyzerTest {
 
 
     }
+
+    @Test
+    public void whenConstrucorName_IsImproper_ShouldReturnMoodAnalysisException()  {
+
+
+        try {
+            MoodAnalyzer moodAnalyzer=MoodAnalyserFactory.createMoodAnalyser("Improper method name");
+            moodAnalyzer.analyseMood();
+
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.No_SUCH_METHOD,e.exceptionType);
+        }
+
+
+    }
+
+
 }
