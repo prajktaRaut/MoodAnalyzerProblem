@@ -19,18 +19,12 @@ public class MoodAnalyzer
     }
 
     public String analyseMood() throws MoodAnalysisException {
-        try {
 
-            if (message.contains("Happy"))
-                return "SAD";
-            else
-                return "HAPPY";
+        if (message == null) {
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL);
         }
-        catch (NullPointerException e)
-        {
-            throw new MoodAnalysisException("Please enter proper input");
-        }
-
+        return null;
     }
+
 
 }
