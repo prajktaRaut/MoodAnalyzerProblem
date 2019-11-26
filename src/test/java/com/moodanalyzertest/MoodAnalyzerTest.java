@@ -60,6 +60,12 @@ public class MoodAnalyzerTest {
 
     }
 
+    @Test
+    public void givenMethod_ToHandle_NullPointerException() {
 
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
+        String result=moodAnalyzer.analyseMood();
+        Assert.assertEquals("Please enter proper input",result);
 
+    }
 }

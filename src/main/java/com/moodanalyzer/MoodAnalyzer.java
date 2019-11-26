@@ -21,10 +21,18 @@ public class MoodAnalyzer
 
     public String analyseMood()
     {
-        if (message.contains("Happy"))
-            return "SAD";
-        else
-            return "HAPPY";
+        try {
+
+            if (message.contains("Happy"))
+                return "SAD";
+            else
+                return "HAPPY";
+        }
+        catch (NullPointerException e)
+        {
+            return "Please enter proper input";
+        }
+
     }
 
 }
