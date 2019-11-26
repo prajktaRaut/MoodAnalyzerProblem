@@ -22,9 +22,9 @@ public class MoodAnalyzer
     public String analyseMood()
     {
         if (message.contains("Happy"))
-            return "HAPPY";
-        else
             return "SAD";
+        else
+            return "HAPPY";
     }
 
 }
