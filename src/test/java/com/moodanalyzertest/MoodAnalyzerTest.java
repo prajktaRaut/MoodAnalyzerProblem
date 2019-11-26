@@ -1,5 +1,6 @@
 package com.moodanalyzertest;
 
+import com.moodanalyzer.MoodAnalysisException;
 import com.moodanalyzer.MoodAnalyzer;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,7 +11,12 @@ public class MoodAnalyzerTest {
     public void ifMeesageIs_SadMood_ShouldReturnSadMood() {
 
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
-        String result=moodAnalyzer.analyseMood("I am in Sad Mood");
+        String result= null;
+        try {
+            result = moodAnalyzer.analyseMood("I am in Sad Mood");
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals("SAD",result);
 
     }
@@ -19,7 +25,12 @@ public class MoodAnalyzerTest {
     public void IfMessageIs_AnyMood_ShouldReturnHappyMood_() {
 
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in Any Mood");
-        String result=moodAnalyzer.analyseMood();
+        String result= null;
+        try {
+            result = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals("HAPPY",result);
 
     }
@@ -28,7 +39,12 @@ public class MoodAnalyzerTest {
     public void ifInputIs_AnyParameter_ShouldReturnSadOrHappyMood() {
 
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
-        String result=moodAnalyzer.analyseMood("I am in Happy Mood");
+        String result= null;
+        try {
+            result = moodAnalyzer.analyseMood("I am in Happy Mood");
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals("HAPPY",result);
 
     }
@@ -37,7 +53,12 @@ public class MoodAnalyzerTest {
     public void ifInputIs_Null_ShouldReturnSadOrHappyMood() {
 
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
-        String result=moodAnalyzer.analyseMood();
+        String result= null;
+        try {
+            result = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals("SAD",result);
 
     }
@@ -46,7 +67,12 @@ public class MoodAnalyzerTest {
     public void IfInputInConstructorIs_SadMood_ShouldReturnSad() {
 
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in Sad Mood");
-        String result=moodAnalyzer.analyseMood();
+        String result= null;
+        try {
+            result = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals("SAD",result);
 
     }
@@ -55,7 +81,12 @@ public class MoodAnalyzerTest {
     public void IfInputInConstructorIs_HappyMood_ShouldReturnSad() {
 
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in Happy Mood");
-        String result=moodAnalyzer.analyseMood();
+        String result= null;
+        try {
+            result = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals("SAD",result);
 
     }
@@ -64,7 +95,12 @@ public class MoodAnalyzerTest {
     public void givenMethod_ToHandle_NullPointerException() {
 
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
-        String result=moodAnalyzer.analyseMood();
+        String result= null;
+        try {
+            result = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals("Please enter proper input",result);
 
     }
@@ -73,9 +109,27 @@ public class MoodAnalyzerTest {
     public void givenMethod_ToHandle_NullPointerException_ShouldReturnHappy() {
 
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
-        String result=moodAnalyzer.analyseMood();
+        String result= null;
+        try {
+            result = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals("HAPPY",result);
 
     }
 
+    @Test
+    public void givenMethod_ToHandleCustomeException_ShouldReturnMessage() {
+
+        MoodAnalyzer moodAnalyzer=new MoodAnalyzer();
+        try {
+            String result=moodAnalyzer.analyseMood();
+        }
+        catch (MoodAnalysisException e) {
+            Assert.assertEquals("Please enter proper input",e.getMessage());
+        }
+
+
+    }
 }
