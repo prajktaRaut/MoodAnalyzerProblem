@@ -7,7 +7,7 @@ public class MoodAnalyserReflector {
 
     public static Constructor<?> getConstructor(Class<?> ... param) throws MoodAnalysisException {
         try {
-            Class<?> moodAnalyserClass = Class.forName("com.moodanalyzer.RealMoodAnalyser");
+            Class<?> moodAnalyserClass = Class.forName("com.moodanalyzer.RealMoodAnalyser12");
             return moodAnalyserClass.getConstructor(param);
 
         } catch (ClassNotFoundException e) {

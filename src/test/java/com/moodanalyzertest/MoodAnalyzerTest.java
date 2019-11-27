@@ -227,10 +227,17 @@ public class MoodAnalyzerTest {
         } catch (MoodAnalysisException e) {
             e.printStackTrace();
         }
-
-
     }
 
+    @Test
+    public void givenMoodAnalyserImproperClassNameShouldReturnException() {
+        try {
+            Constructor<?> constructor =  MoodAnalyserReflector.getConstructor(String.class);
+            MoodAnalyserReflector.createMoodAnalyser(constructor,"I am in happy mood");
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, e.exceptionType);
+        }
+    }
 
 
 
