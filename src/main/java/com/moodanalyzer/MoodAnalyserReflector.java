@@ -55,4 +55,22 @@ public class MoodAnalyserReflector {
 
     }
 
+    public static Object invokeMethod(Object moodAnalysisObject, String methodName) throws MoodAnalysisException {
+
+        try {
+            return moodAnalysisObject.getClass().getMethod(methodName).invoke(moodAnalysisObject);
+        } catch (NoSuchMethodException e) {
+            throw new MoodAnalysisException("Define proper method name", MoodAnalysisException.ExceptionType.No_SUCH_METHOD);
+        }
+        catch (IllegalAccessException | InvocationTargetException e)
+        {
+            throw new MoodAnalysisException("May be issued with Data Entered", MoodAnalysisException.ExceptionType.NO_ACCESS);
+
+        }
+
+    }
+
+
+
+
 }
