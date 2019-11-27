@@ -1,11 +1,14 @@
 package com.moodanalyzertest;
 
-import com.moodanalyzer.MoodAnalyserFactory;
+import com.moodanalyzer.MoodAnalyserReflector;
 import com.moodanalyzer.MoodAnalysisException;
 import com.moodanalyzer.MoodAnalyzer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import java.lang.reflect.Constructor;
+
 
 public class MoodAnalyzerTest {
 
@@ -173,7 +176,7 @@ public class MoodAnalyzerTest {
 
         MoodAnalyzer moodAnalyzer= null;
         try {
-            moodAnalyzer = MoodAnalyserFactory.createMoodAnalyser("I am in debug mode");
+            moodAnalyzer = MoodAnalyserReflector.createMoodAnalyser("I am in debug mode");
         } catch (MoodAnalysisException e) {
             e.printStackTrace();
         }
@@ -189,7 +192,7 @@ public class MoodAnalyzerTest {
 
 
         try {
-            MoodAnalyzer moodAnalyzer=MoodAnalyserFactory.createMoodAnalyser("Improper class name");
+            MoodAnalyzer moodAnalyzer= MoodAnalyserReflector.createMoodAnalyser("Improper class name");
             moodAnalyzer.analyseMood();
 
         } catch (MoodAnalysisException e) {
@@ -200,19 +203,17 @@ public class MoodAnalyzerTest {
     }
 
     @Test
-    public void whenConstrucorName_IsImproper_ShouldReturnMoodAnalysisException()  {
+    public void whenConstructorName_IsImproper_ShouldReturnMoodAnalysisException()  {
 
 
         try {
-            MoodAnalyzer moodAnalyzer=MoodAnalyserFactory.createMoodAnalyser("Improper method name");
+            MoodAnalyzer moodAnalyzer= MoodAnalyserReflector.createMoodAnalyser("Improper method name");
             moodAnalyzer.analyseMood();
 
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.No_SUCH_METHOD,e.exceptionType);
         }
 
-
     }
-
 
 }
