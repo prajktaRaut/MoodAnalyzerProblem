@@ -216,4 +216,22 @@ public class MoodAnalyzerTest {
 
     }
 
+    @Test
+    public void givenMoodAnanlyserClass_WhenProper_ShouldReturnObject() {
+
+        try {
+            Constructor<?> constructor=MoodAnalyserReflector.getConstructor(String.class);
+            Object myobject=MoodAnalyserReflector.createMoodAnalyser(constructor,"I am in Happy Mood");
+            Assert.assertEquals(new MoodAnalyzer("I am in Happy Mood"),myobject);
+
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+
 }
