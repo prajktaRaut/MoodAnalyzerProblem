@@ -21,7 +21,7 @@ public class MoodAnalyserReflector {
     public static Object createMoodAnalyser(Constructor<?> constructor, Object ... message) throws MoodAnalysisException {
 
         try {
-            return constructor.newInstance(message);
+            return constructor.newInstance(message,message);
         } catch (InstantiationException e) {
             throw new MoodAnalysisException("Method Not Instantiate",MoodAnalysisException.ExceptionType.NOT_INSTANTIATE);
         } catch (IllegalAccessException e) {
