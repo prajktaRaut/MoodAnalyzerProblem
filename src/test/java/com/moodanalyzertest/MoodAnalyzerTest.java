@@ -254,23 +254,32 @@ public class MoodAnalyzerTest {
     }
 
     @Test
-    public void givenHappyMessage_WithDefaultConstructor_ShouldReturnHappy() {
+    public void givenHappyMessage_WhenProper_ShouldReturnHappy() {
 
         try {
-            Object myObject=MoodAnalyserReflector.createMoodAnalyzser();
-            MoodAnalyserReflector.setFieldValue(myObject,"fieldName","fieldValue");
+            Object myObject = MoodAnalyserReflector.createMoodAnalyzser();
+            MoodAnalyserReflector.setFieldValue(myObject, "fieldName", "fieldValue");
             Object mood = null;
-            mood = MoodAnalyserReflector.invokeMethod(myObject,"analyseMood");
-            Assert.assertEquals("HAPPY",mood);
+            mood = MoodAnalyserReflector.invokeMethod(myObject, "analyseMood");
+            Assert.assertEquals("HAPPY", mood);
 
         } catch (MoodAnalysisException e) {
             e.printStackTrace();
         }
-
     }
 
+    @Test
+    public void givenHappyMessage_WhenImproper_ShouldReturnEXception() {
 
+        try {
+            Constructor<?> constructor =  MoodAnalyserReflector.getConstructor(String.class);
+            MoodAnalyserReflector.createMoodAnalyser(constructor,"I am in happy mood");
 
+        } catch (MoodAnalysisException e) {
 
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.No_SUCH_METHOD,e.exceptionType);
+
+        }
+    }
 
 }
